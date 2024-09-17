@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="styles/img/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <title>Binary Search Tree Visualizer</title>
+  </head>
+  <body>
+    <h1>Arbol Binario de Búsqueda</h1>
+
+    <div class="menu">
+      <input
+        type="text"
+        id="nodeValue"
+        placeholder="Valor del nodo"
+        maxlength="3"
+      />
+      <button onclick="insertNode()">Insertar Nodo</button>
+      <button onclick="deleteNode()">Eliminar Nodo</button>
+      <button onclick="clearTree()">Vaciar Arbol</button>
+    </div>
+
+    <div class="container">
+      <div id="cy"></div>
+    </div>
+
+    <script src="node_modules/cytoscape/dist/cytoscape.min.js"></script>
+    <script type="module">
+      import {
+        insertNodeAPI,
+        deleteNodeAPI,
+        clearTreeAPI,
+      } from "/connection.js";
+
+      //Funcion para vaciar el arbol
+      window.clearTree = function clearTree() {
+        clearTreeAPI().then(() => {
+          location.reload(); // Recargar la página después de vaciar
+        });
+      };
+
+      // Función para insertar nodo
+      window.insertNode = function insertNode() {
+        const value = document.getElementById("nodeValue").value;
+        if (value === "") {
+          alert("Por favor ingresa un valor.");
+        } else {
+          insertNodeAPI(value).then(() => {
+            location.reload(); // Recargar la página después de insertar
+          });
+        }
+      };
+
+      // Función para manejar la eliminación del nodo
+      window.deleteNode = function deleteNode() {
+        const value = document.getElementById("nodeValue").value;
+        if (value === "") {
+          alert("Por favor ingresa un valor.");
+        } else {
+          deleteNodeAPI(value).then(() => {
+            location.reload(); // Recargar la página después de eliminar
+          });
+        }
+      };
+    </script>
+  </body>
+</html>
