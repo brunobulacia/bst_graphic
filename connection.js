@@ -14,7 +14,6 @@ export async function getAPI() {
       return;
     }
     nodes = data;
-    console.log(nodes.slice(1));
     initializeCytoscape();
   } catch (error) {
     console.error("Error:", error);
