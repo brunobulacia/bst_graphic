@@ -44,6 +44,16 @@ export function initializeCytoscape() {
     minZoom: 0.7, // Set minimum zoom level
     maxZoom: 1.5, // Set maximum zoom level
   });
+
+  window.addEventListener("resize", () => {
+    cy.resize();
+    cy.center(); // Opcional: centra el gráfico
+  });
+
+  // Inicializar con el tamaño actual
+  cy.resize();
+  cy.center(); // Opcional: centra el gráfico
+
   cy.viewport({
     zoom: 1.1,
     pan: { x: 500, y: 100 },
