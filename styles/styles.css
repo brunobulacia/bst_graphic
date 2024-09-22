@@ -95,3 +95,22 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: fit-content;
 }
+
+/* Consulta de medios para pantallas pequeñas */
+@media (max-width: 500px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu input[type="text"] {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%; /* Ajustar el ancho del input */
+  }
+
+  .menu button {
+    margin: 10px 0;
+    width: 100%; /* Ajustar el ancho de los botones */
+  }
+}

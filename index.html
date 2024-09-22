@@ -34,7 +34,7 @@
 
   <script src="node_modules/cytoscape/dist/cytoscape.min.js"></script>
   <script type="module">
-    import { searchNodePaint } from "/Web/client/cytoscape/paint.js";
+    import { searchNodePaint } from "/client/cytoscape/paint.js";
     //funcion para buscar un nodo y pintarlo
     window.searchNode = function searchNode() {
       const value = document.getElementById("nodeValue").value;
@@ -52,7 +52,7 @@
       clearTreeAPI,
       getCantNodesAPI,
       getHeightAPI,
-    } from "/Web/client/connection.js";
+    } from "/client/connection.js";
 
     window.getCantNodes = function getCantNodes() {
       alert("Cantidad de nodos: " + getCantNodesAPI());
