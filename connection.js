@@ -14,6 +14,7 @@ export async function getAPI() {
       return;
     }
     nodes = data;
+    console.log(nodes.slice(1));
     initializeCytoscape();
   } catch (error) {
     console.error("Error:", error);
@@ -33,6 +34,22 @@ export function root() {
 export function getNodes() {
   if (nodes) {
     return nodes.slice(1, nodes.length);
+  } else {
+    throw new Error("No hay nodos disponibles en el árbol.");
+  }
+}
+
+export function getCantNodesAPI() {
+  if (nodes) {
+    return nodes.length;
+  } else {
+    throw new Error("No hay nodos disponibles en el árbol.");
+  }
+}
+
+export function getHeightAPI() {
+  if (nodes) {
+    return nodes[nodes.length - 1][2];
   } else {
     throw new Error("No hay nodos disponibles en el árbol.");
   }

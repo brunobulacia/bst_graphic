@@ -8,15 +8,12 @@ async function initializeGraph() {
   await getAPI(); // Espera hasta que los nodos estén listos
   formatJSON();
   connectEdges();
-  console.log(getNodes());
   moveNode();
 }
 
 initializeGraph(); // Llama a la función asincrónica para inicializar el grafo
 
 export function formatJSON() {
-  let posY = 0;
-  let posX = 0;
   nodes.push({
     data: {
       id: String(root()),
@@ -28,7 +25,7 @@ export function formatJSON() {
       data: {
         id: String(node[0]),
       },
-      position: { x: posX, y: posY },
+      position: { x: 0, y: 0 },
     });
   });
   return nodes;
@@ -50,7 +47,7 @@ export function connectEdges() {
 export function moveNode() {
   const cy = getCy();
   let horizontalSpacing = Math.pow(2, getNodes()[getNodes().length - 1][2] + 4);
-  let verticalSpacing = 50; // Espaciado vertical ajustado (antes 100)
+  let verticalSpacing = 50; //
   let rootX = 500; // Posición inicial de la raíz en el eje X (mantener o ajustar)
   let rootY = 50; // Posición inicial de la raíz en el eje Y (mantener o ajustar)
   // Recorrer cada nodo para posicionarlos
@@ -63,6 +60,7 @@ export function moveNode() {
     // Ajustamos el espaciado horizontal según el nivel del nodo
     let depth = node[2]; // La profundidad del nodo
     let levelSpacing = horizontalSpacing / Math.pow(2, depth); // Reducimos el espacio con la profundidad
+
     if (node[0] < node[1]) {
       // El hijo es menor que el padre, va a la izquierda
       posX = posParent.x - levelSpacing;
@@ -73,4 +71,16 @@ export function moveNode() {
     // Actualizamos la posición del nodo hijo
     child.position({ x: posX, y: posY });
   });
+}
+
+export function searchNodePaint(e) {
+  let foundNode = null;
+  const cy = getCy();
+  foundNode = cy.getElementById(e);
+  if (foundNode) {
+    foundNode.style("background-color", "red");
+  }
+  setTimeout(() => {
+    foundNode.style("background-color", "white");
+  }, 2000);
 }
