@@ -9,7 +9,7 @@
       href="styles/img/favicon-32x32.png"
       type="image/x-icon"
     />
-    <title>Arbol Binario Primo</title>
+    <title>Arbol Binario Primovich</title>
   </head>
   <h1>Arbol Binario de Búsqueda</h1>
 
@@ -34,7 +34,7 @@
 
   <script src="node_modules/cytoscape/dist/cytoscape.min.js"></script>
   <script type="module">
-    import { searchNodePaint } from "/client/cytoscape/paint.js";
+    import { searchNodePaint } from "/cytoscape/paint.js";
     //funcion para buscar un nodo y pintarlo
     window.searchNode = function searchNode() {
       const value = document.getElementById("nodeValue").value;
@@ -52,7 +52,7 @@
       clearTreeAPI,
       getCantNodesAPI,
       getHeightAPI,
-    } from "/client/connection.js";
+    } from "/connection.js";
 
     window.getCantNodes = function getCantNodes() {
       alert("Cantidad de nodos: " + getCantNodesAPI());
